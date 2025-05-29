@@ -58,7 +58,7 @@ AtliQ AI partnered with Shield Insurance to develop a machine learning model tha
 
 ---
 
-## 📈 Final Outcome  
+## 📈 Results  
 - Developed **segmented predictive models** achieving 98% accuracy for both age groups.  
 - Utilized **XGBoost** for individuals over 25 and **Linear Regression** for those under 25, with both models performing comparably well post-segmentation.  
 - Successfully reduced prediction errors by age-based segmentation and inclusion of domain-specific features such as genetic factors.

@@ -1,95 +1,87 @@
-# Health-Care-Premium-Prediction
+# 🏥 Health Care Premium Prediction
 
-## Project Statement
-AtliQ AI has partnered with Shield Insurance to develop a predictive machine learning model to estimate health insurance premiums based on factors such as age, smoking habits, BMI, and medical history. The goal is to build a robust and accurate model that helps in premium estimation and risk assessment.
+## 📌 Project Statement  
+AtliQ AI partnered with Shield Insurance to develop a machine learning model that predicts health insurance premiums based on factors such as age, smoking habits, BMI, and medical history. The goal was to create a robust and accurate model to assist in premium estimation and risk assessment.
 
-## Data Cleaning
-Detected outliers using box plot visualizations and IQR (Interquartile Range) method.
+---
 
-Checked for duplicate rows and missing (NA) values.
+## 🧰 Technologies & Tools Used  
+- Python  
+- Pandas, NumPy – Data manipulation  
+- Matplotlib, Seaborn – Visualization  
+- Scikit-learn – To build Machine Learning Models  
+- XGBoost – Gradient boosting model  
+- Statsmodels – VIF calculation for multicollinearity detection  
 
-Dropped NA values where missing count was below 15.
+---
 
-## EDA
-Univariate and Bivariate Analysis:
+## 🧪 Project Workflow  
 
-Numerical columns:
+### 1. 🧹 Data Cleaning  
+- Detected outliers using box plots and IQR (Interquartile Range).  
+- Checked for duplicates and missing (NA) values.  
+- Dropped missing values where the count was below 15.
 
-Explored distribution using histograms and KDE plots.
+### 2. 📊 Exploratory Data Analysis (EDA)  
+- **Numerical variables:**  
+  - Analyzed distributions using histograms and KDE plots.  
+  - Explored relationships with the target variable (Annual Premium Amount) through scatter plots and correlation matrices.  
+- **Categorical variables:**  
+  - Performed univariate analysis with bar plots.  
+  - Analyzed relationships via crosstabs to understand category distributions.
 
-Analyzed relationships with the Annual Premium Amount using scatter plots and correlation matrices.
+### 3. 🛠️ Feature Engineering  
+- Applied domain-based ordinal encoding with aggregation for the medical history column.  
+- Encoded text columns numerically.  
+- Used One-Hot Encoding for nominal categorical features.
 
-Categorical columns:
+### 4. 🎯 Feature Selection  
+- Dropped irrelevant or redundant features based on correlation analysis.  
+- Scaled numerical features using Min-Max Scaler.  
+- Applied Variance Inflation Factor (VIF) to detect and remove multicollinearity.
 
-Conducted  univarate analysis using (bar plots).
+### 5. 🤖 Model Training  
+- Trained multiple models:  
+  - Linear Regression (~92% accuracy)  
+  - Ridge Regression (~92% accuracy)  
+  - XGBoost Regressor (~98% accuracy)  
 
-Analyzed relationships using cross tabs by displaying the distribution of one variable across the categories of another 
+### 6. 🔧 Hyperparameter Tuning  
+- Used RandomizedSearchCV to tune XGBoost parameters.  
+- Model performance remained stable at ~98% accuracy, indicating robustness.
 
-## Feature Engineering
-Applied domain-based ordinal encoding with aggregation for medical history column 
+### 7. 📉 Error Analysis & Data Segmentation  
+- Found that age was a key factor driving prediction errors, particularly for individuals under 25.  
+- Decided to segment the data:  
+  - **Model A:** For individuals aged ≤ 25, trained with additional genetic factor features, significantly improving performance.  
+  - **Model B:** For individuals aged > 25, also included genetic data for better generalization.
 
-Encoded text columns numerically.
+---
 
-Used One-Hot Encoding for nominal categorical features.
+## 📈 Final Outcome  
+- Developed **segmented predictive models** achieving 98% accuracy for both age groups.  
+- Utilized **XGBoost** for individuals over 25 and **Linear Regression** for those under 25, with both models performing comparably well post-segmentation.  
+- Successfully reduced prediction errors by age-based segmentation and inclusion of domain-specific features such as genetic factors.
 
-## Feature Selection
-Examined feature correlation to drop irrelevant columns.
+---
 
-Scaled numerical features using Min-Max Scaler.
+## 💡 Conclusion  
+- Incorporating domain-specific features like genetic factors significantly improved model accuracy.  
+- Segmenting data by age effectively addressed error disparities, particularly for the younger population.  
+- Availability of more high-quality and relevant data will further enhance premium prediction accuracy and model robustness.
 
-Applied Variance Inflation Factor (VIF) to detect multicollinearity and retained optimal features.
+---
 
-## Model Training
-Linear Regression: Achieved an accuracy of ~92%.
+## 💼 Business Impact  
+- Enables **accurate and personalized health insurance premium calculations**.  
+- Helps Shield Insurance **reduce underwriting risks and improve decision-making**.  
+- Automates premium estimation, reducing **manual effort and errors**.  
+- Supports **customer segmentation** for tailored insurance offerings and better service.
 
-Ridge Regression: Also yielded ~92% accuracy.
-
-XGBoost Regressor: Improved accuracy significantly to ~98%.
-
-## Hyperparameter Tuning
-Used RandomizedSearchCV to optimize XGBoost parameters.
-
-Despite parameter tuning, the model consistently achieved 98% accuracy, indicating robustness.
-
-## Error Analysis
-Conducted error analysis on prediction results.
-
-Identified age as a significant contributor to prediction error.
-
-Specifically, individuals under 25 showed the highest error rates.
-
-Decided to segment the data based on age for better performance.
-
-## Data Segmentation
-To address the model’s higher error rate for younger individuals, two separate models were created:
-
-Model A: Age ≤ 25
-Trained on individuals under 25 using the notebook ml_premium_health_insurance_prediction_young.
-
-Introduced genetic factor as an additional feature.
-
-Retrained model (ml_premium_health_insurance_prediction_young_with_gr) significantly improved performance with this feature.
-
-Model B: Age > 25
-Trained on individuals over 25 using ml_premium_health_insurance_prediction_rest_with_gr.
-
-Also included genetic factor data, leading to improved performance and generalization.
-
-## Outcome
-Successfully built segmented predictive models for health insurance premium estimation with 98% accuracy in both groups.
-
-Used XGBoost for individuals over 25 and Linear Regression for individuals under 25  both achieved similar high performance after segmentation.
-
-Identified age as a major source of error, and addressed it by creating separate models for different age groups.
+---
 
 
 
-## Conclusion
-Incorporating domain-specific features like genetic factors significantly enhanced model performance.
-
-Segmenting data by age helped address error disparities and improved prediction accuracy for the under-25 group.
-
-More high-quality, relevant data directly contributes to better model training and more accurate premium predictions.
 
 
 
